@@ -1,0 +1,96 @@
+body {
+    background: rgb(102, 178, 255);
+  }
+  
+main {
+    max-width: 32rem;
+    padding: 2rem;
+    margin: auto;
+  }
+  
+h1 {
+    text-align: center;
+    color: rgb(255, 255, 153);
+  }
+
+#count {
+  height: 30px;
+  text-align: center;
+  margin: 5px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 20px;
+  color: yellow;
+  }
+  
+.board {
+    margin:0 auto;
+}
+
+.square {
+    display: inline-block;
+    width: 8em;
+    height: 8em;
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+    line-height: 8em;
+    color: rgb(255, 255, 153);
+    border: 1px solid rgb(255, 255, 153);
+  }
+  
+  .controls {
+    text-align: center;
+  }
+
+#messageBox {
+    text-align: center;
+    color: rgb(255, 255, 153);
+    border: 2px solid rgb(255, 255, 153);
+    border-radius: 10px;
+  }
+  
+#difficulty{
+    height: 40px;
+    width: 80px; 
+    border-radius: 10px; 
+    font-size: 15px;
+    background-color: rgb(255, 255, 153);
+    color: #666;
+    text-align: center;
+  }
+
+  #myMarker{
+    height: 40px;
+    width: 120px; 
+    border-radius: 10px; 
+    font-size: 15px;
+    background-color: rgb(255, 255, 153);
+    color: #666;
+    text-align: center;
+  }
+
+  /* Buttons */
+  .button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #666;
+    background-color: rgb(255, 255, 153);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color: rgb(224, 224, 139)}
+  
+  .button:active {
+    background-color: rgb(224, 224, 139);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  

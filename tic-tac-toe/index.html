@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>井字棋游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+      <h1>Tic Tac Toe</h1>
+      <div id="count">Win:0&nbsp&nbsp&nbspLose:0</div>
+      <br>
+      <table class="board">
+        <tr>
+          <td>
+              <div id="0" class="square left top"></div>
+          </td>
+          <td>
+              <div id="1" class="square top v-middle"></div>
+          </td>
+          <td>
+              <div id="2" class="square right top"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <div id="3" class="square left h-middle"></div>
+          </td>
+          <td>
+              <div id="4" class="square v-middle h-middle"></div>
+          </td>
+          <td>
+              <div id="5" class="square right h-middle"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <div id="6" class="square left bottom"></div>
+          </td>
+          <td>
+              <div id="7" class="square bottom v-middle"></div>
+          </td>
+          <td>
+              <div id="8" class="square right bottom"></div>
+          </td>
+        </tr> 
+       </table>
+       <br>
+       <div id="messageBox">Pick a square!</div>
+       <br>
+       <div class="controls">
+         <button class="button" onclick="resetGame()">Play Again</button>&nbsp;
+         <select id="difficulty">
+           <option value="moron" selected >Moron</option>
+           <option value="genius">Genius</option>
+         </select>
+         <select id="myMarker">
+          <option value="O" selected >My marker:O</option>
+          <option value="X">My marker:X</option>
+        </select>
+        </div>
+    </main> 
+   <script src="game.js"></script>
+  </body>
+</html>
