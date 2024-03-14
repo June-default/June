@@ -1,18 +1,19 @@
 {
     "schema_version": "v1",
-    "name_for_human": "猜灯谜助手",
-    "name_for_model": "riddle_assistant",
-    "description_for_human": "智能助手帮助用户玩猜灯谜游戏，智能助手提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。",
-    "description_for_model": "帮助用户玩猜灯谜游戏，提供谜面，判断用户答案是否正确，并在用户需要时揭示谜底。",
+    "name_for_human": "海龟汤游戏插件",
+    "name_for_model": "hgt_test",
+    "description_for_human": "海龟汤文字猜谜游戏, 大模型作为出题者会提出一个难以理解的事件（汤面），参与猜题者可以提出任何问题以试图缩小范围并找出事件背后真正的原因，但出题者仅能以“是”、“不是”或“不重要”来回答问题",
+    "description_for_model": "和用户进行交互，帮助用户玩海龟汤文字游戏，开始提出一个事件，用户会询问问题，根据汤面、汤底和用户的问题，以“是”、“不是”或“不重要”回答",
     "auth": {
-        "type": "service_http"
+        "type": "http_service"
     },
-    "api": {
+    "api":{
         "type": "openapi",
         "url": "https://github.com/June-default/June/tree/main/riddle_assistant"
     },
     "logo_url": "https://img.zcool.cn/community/0179e358a53d9aa801219c77c25d56.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100",
     "contact_email": "393188881@qq.com",
     "legal_info_url": "http://www.baidu.com/legal"
+    
 }
 

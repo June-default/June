@@ -1,47 +1,127 @@
 openapi: 3.0.1
 info:
-  title: 猜灯谜助手
-  description: 智能助手帮助用户玩猜灯谜游戏，智能助手提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。
+  title: 海龟汤游戏插件
+  description: 和用户进行交互，帮助用户玩海龟汤文字游戏，开始提出一个事件，用户会询问问题，根据汤面、汤底和用户的问题，以“是”、“不是”或“不重要”回答
   version: "v1"
 servers:
-  - url: "https://github.com/June-default/June/tree/main/riddle_assistant"
+  - url: https://github.com/June-default/June/tree/main/riddle_assistant/plugin-server.py
 paths:
-  /play_riddle:
+  /select_story:
     post:
-      operationId: playRiddle
-      summary: 猜灯谜游戏
+      operationId: selectStory
+      summary: 选择一个故事供用户提问
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/playRiddleRequest"
+              $ref: "#/components/schemas/selectStoryRequest"
       responses:
         "200":
-          description: 回答判断结果
+          description: 返回选定的故事和提示信息
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/playRiddleResponse"
-      security:
-        - service_http: []
+                $ref: "#/components/schemas/selectStoryResponse"
+  /answer_question:
+    post:
+      operationId: answerQuestion
+      summary: 回答用户提出的问题
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/answerQuestionRequest"
+      responses:
+        "200":
+          description: 返回回答结果和新的提示信息
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/answerQuestionResponse"
+  /make_prediction:
+    post:
+      operationId: makePrediction
+      summary: 用户推断完整的故事
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/makePredictionRequest"
+      responses:
+        "200":
+          description: 返回用户推断结果的判断和新的提示信息
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/makePredictionResponse"
+  /logo.png:
+    get:
+      operationId: getPluginLogo
+      summary: 获取插件logo
+      responses:
+        "200":
+          description: 返回插件logo的图像文件
 
 components:
   schemas:
-    playRiddleRequest:
+    selectStoryRequest:
       type: object
-      required: [riddle_answer]
+      required: [story_type]
       properties:
-        riddle_answer:
+        story_type:
           type: string
-          description: 用户猜测的答案
+          description: 用户选择的故事类型
 
-    playRiddleResponse:
+    selectStoryResponse:
       type: object
+      required: [story_firstshow, prompt]
       properties:
-        is_correct:
-          type: boolean
-          description: 用户答案是否正确
-        riddle_answer:
+        story_firstshow:
+          type: array
+          items:
+            type: string
+          description: 选定的故事信息
+        prompt:
           type: string
-          description: 谜底
+          description: 提示信息
+
+    answerQuestionRequest:
+      type: object
+      required: [question]
+      properties:
+        question:
+          type: string
+          description: 用户提出的问题
+
+    answerQuestionResponse:
+      type: object
+      required: [message, prompt]
+      properties:
+        message:
+          type: string
+          description: 回答结果
+        prompt:
+          type: string
+          description: 新的提示信息
+
+    makePredictionRequest:
+      type: object
+      required: [prediction]
+      properties:
+        prediction:
+          type: string
+          description: 用户推断完整的故事
+
+    makePredictionResponse:
+      type: object
+      required: [message, prompt]
+      properties:
+        message:
+          type: string
+          description: 判断结果
+        prompt:
+          type: string
+          description: 新的提示信息
