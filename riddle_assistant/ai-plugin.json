@@ -2,8 +2,8 @@
     "schema_version": "v1",
     "name_for_human": "猜灯谜助手",
     "name_for_model": "riddle_assistant",
-    "description_for_human": "智能助手帮助用户玩猜灯谜游戏，提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。",
-    "description_for_model": "帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在用户需要时揭示谜底。",
+    "description_for_human": "智能助手帮助用户玩猜灯谜游戏，智能助手提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。",
+    "description_for_model": "帮助用户玩猜灯谜游戏，提供谜面，判断用户答案是否正确，并在用户需要时揭示谜底。",
     "auth": {
         "type": "service_http"
     },
