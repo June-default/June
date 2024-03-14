@@ -9,10 +9,10 @@ paths:
   /provide_riddle:
     get:
       operationId: provideRiddle
-      summary: 提供猜谜题目
+      summary: 提供猜谜题目的谜面
       responses:
         "200":
-          description: 返回猜谜题目
+          description: 返回猜谜题目的谜面
           content:
             application/json:
               schema:
@@ -20,7 +20,7 @@ paths:
   /check_answer:
     post:
       operationId: checkAnswer
-      summary: 检查答案是否正确
+      summary: 检查用户的答案是否正确
       requestBody:
         required: true
         content:
@@ -29,7 +29,7 @@ paths:
               $ref: "#/components/schemas/checkAnswer"
       responses:
         "200":
-          description: 返回答案判断结果
+          description: 返回用户的答案判断结果
           content:
             application/json:
               schema:
@@ -60,7 +60,7 @@ components:
       properties:
         riddle:
           type: string
-          description: 猜谜谜面
+          description: 灯谜的谜面
     checkAnswer:
       type: object
       required: [riddle_id, answer]
@@ -84,4 +84,4 @@ components:
       properties:
         answer:
           type: string
-          description: 猜谜谜底
+          description: 灯谜的谜底
