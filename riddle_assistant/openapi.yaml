@@ -1,88 +1,85 @@
 openapi: 3.0.1
 info:
   title: 猜灯谜助手
-  description: 智能助手帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在需要时揭示谜底。
+  description: 智能助手帮助用户玩猜灯谜游戏，提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。
   version: "v1"
 servers:
-  - url: http://10.21.128.65:80/C:/Users/chezh/Desktop/riddle_assistant/openapi.yaml
+  - url: https://github.com/June-default/June/tree/main/riddle_assistant
 paths:
-  /get_riddle:
+  /riddle:
     get:
-      operationId: getRiddle
-      summary: 获取猜谜题目
+      summary: 提出猜灯谜
       responses:
         "200":
-          description: 返回猜谜题目
+          description: 返回猜灯谜的谜面
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/getRiddle"
-  /check_answer:
+                $ref: "#/components/schemas/riddle"
     post:
-      operationId: checkAnswer
       summary: 检查答案是否正确
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/checkAnswer"
+              $ref: "#/components/schemas/answer"
       responses:
         "200":
           description: 返回答案判断结果
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/checkResult"
-  /reveal_answer:
+                $ref: "#/components/schemas/result"
+  /reveal:
     get:
-      operationId: revealAnswer
-      summary: 揭示谜底
+      summary: 揭晓猜灯谜的谜底
       parameters:
         - name: riddle_id
           in: query
           required: true
           schema:
             type: string
-          description: 猜谜题目的唯一标识符
+          description: 猜灯谜的唯一标识符
       responses:
         "200":
-          description: 返回猜谜谜底
+          description: 返回猜灯谜的谜底
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/revealAnswer"
-
+                $ref: "#/components/schemas/reveal"
 components:
   schemas:
-    getRiddle:
+    riddle:
       type: object
-      required: [riddle]
       properties:
         riddle:
           type: string
-          description: 猜谜题目内容
-    checkAnswer:
+          description: 猜灯谜的谜面
+    answer:
       type: object
-      required: [riddle_id, answer]
+      required:
+        - riddle_id
+        - user_answer
       properties:
         riddle_id:
           type: string
-          description: 猜谜题目的唯一标识符
-        answer:
+          description: 猜灯谜的唯一标识符
+        user_answer:
           type: string
-          description: 用户输入的答案
-    checkResult:
+          description: 用户回答的答案
+    result:
       type: object
-      required: [result]
       properties:
-        result:
+        is_correct:
           type: boolean
-          description: 答案判断结果，true表示答案正确，false表示答案错误
-    revealAnswer:
-      type: object
-      required: [answer]
-      properties:
-        answer:
+          description: 回答判断结果，true表示回答正确，false表示回答错误
+        reveal:
           type: string
-          description: 猜谜谜底
+          description: 如果用户要求揭晓，则返回猜灯谜的谜底
+    reveal:
+      type: object
+      properties:
+        reveal:
+          type: string
+          description: 猜灯谜的谜底

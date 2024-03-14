@@ -2,17 +2,17 @@
     "schema_version": "v1",
     "name_for_human": "猜灯谜助手",
     "name_for_model": "riddle_assistant",
-    "description_for_human": "智能助手帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在需要时揭示谜底。",
-    "description_for_model": "帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在需要时揭示谜底。",
+    "description_for_human": "智能助手帮助用户玩猜灯谜游戏，提供谜面，判断用户的答案是否正确，并在用户需要时揭示谜底。",
+    "description_for_model": "帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在用户需要时揭示谜底。",
     "auth": {
         "type": "service_http"
     },
     "api": {
         "type": "openapi",
-        "url": "http://10.21.128.65:80/C:/Users/chezh/Desktop/riddle_assistant/openapi.yaml"
+        "url": "https://github.com/June-default/June/tree/main/riddle_assistant"
     },
     "logo_url": "https://img.zcool.cn/community/0179e358a53d9aa801219c77c25d56.jpg?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100",
-    "contact_email": "support@example.com",
+    "contact_email": "393188881@qq.com",
     "legal_info_url": "http://www.baidu.com/legal"
 }
 
