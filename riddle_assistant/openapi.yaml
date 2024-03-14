@@ -1,0 +1,88 @@
+openapi: 3.0.1
+info:
+  title: 猜灯谜助手
+  description: 智能助手帮助用户玩猜灯谜游戏，提供谜面，判断答案是否正确，并在需要时揭示谜底。
+  version: "v1"
+servers:
+  - url: http://10.21.128.65:80/C:/Users/chezh/Desktop/riddle_assistant/openapi.yaml
+paths:
+  /get_riddle:
+    get:
+      operationId: getRiddle
+      summary: 获取猜谜题目
+      responses:
+        "200":
+          description: 返回猜谜题目
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/getRiddle"
+  /check_answer:
+    post:
+      operationId: checkAnswer
+      summary: 检查答案是否正确
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/checkAnswer"
+      responses:
+        "200":
+          description: 返回答案判断结果
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/checkResult"
+  /reveal_answer:
+    get:
+      operationId: revealAnswer
+      summary: 揭示谜底
+      parameters:
+        - name: riddle_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: 猜谜题目的唯一标识符
+      responses:
+        "200":
+          description: 返回猜谜谜底
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/revealAnswer"
+
+components:
+  schemas:
+    getRiddle:
+      type: object
+      required: [riddle]
+      properties:
+        riddle:
+          type: string
+          description: 猜谜题目内容
+    checkAnswer:
+      type: object
+      required: [riddle_id, answer]
+      properties:
+        riddle_id:
+          type: string
+          description: 猜谜题目的唯一标识符
+        answer:
+          type: string
+          description: 用户输入的答案
+    checkResult:
+      type: object
+      required: [result]
+      properties:
+        result:
+          type: boolean
+          description: 答案判断结果，true表示答案正确，false表示答案错误
+    revealAnswer:
+      type: object
+      required: [answer]
+      properties:
+        answer:
+          type: string
+          description: 猜谜谜底
